@@ -1,0 +1,128 @@
+:root{
+    font-size: clamp(1rem, calc(0.5rem + ((0.75vw - 0.01rem) * 0.6289)), 1.5rem);
+    min-height: 0vw;
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --text-color: #ebebe8;
+    --background-color: #171612;
+    --primary-color: #c6c5b2;
+    --secondary-color: #636144;
+    --accent-color: #aaa779;
+}
+
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#buttonContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#printBtn{
+    font-size: 1.25rem;
+    font-weight: bolder;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    border: 0.15rem solid var(--accent-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+#printBtn:hover{
+    transition: 0.2s;
+    opacity: 0.75;
+}
+
+#mainContent{
+    display: grid;
+    padding: 0rem 0.2rem;
+    grid-template-columns: 1fr 2.5fr;
+    grid-gap: 8rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1;
+    top: 0;
+    left: 0;
+    width: 20rem;
+    height: min-content;
+    padding: 0rem 0.5rem;
+    background-color: var(--secondary-color);
+    border-radius: 2.5rem;
+}
+
+#inputs input{
+    display: grid;
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    width: 15rem;
+    padding: 0;
+}
+
+#inputs input:hover, #inputs input:focus{
+    transition: 0.2s;
+    opacity: 0.75;
+}
+
+#inputs button{
+    font-weight: bolder;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--background-color);
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+#inputs button:hover{
+    transition: 0.2s;
+    opacity: 0.75;
+}
+
+#display{
+    grid-column: 2;
+    color: black;
+    background-color: white;
+    border: 0.2rem solid var(--accent-color);
+    padding: 1rem;
+}
+
+@media print{
+    @page{
+        margin: 0;
+        size: auto;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    #mainContent, #mainContent * {
+        visibility: visible;
+        position: static;
+    }
+
+    #inputs, #printBtn {
+        display: none;
+    }
+
+    #display{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border: none;
+    }
+}
